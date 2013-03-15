@@ -19,8 +19,8 @@ app.configure(function(){
   app.set('view engine', 'jade');
   app.use(express.favicon());
   app.use(express.logger('dev'));
-  app.use(express.bodyParser());
   app.use(express.compress());
+  app.use(express.bodyParser());
   app.use(express.methodOverride());
 
   // apply the vhost middleware, before the router middleware
