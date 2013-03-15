@@ -1,13 +1,12 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  div(data-stork-product=1337)
   script(type='text/javascript')
     (function () {
         var script = document.createElement('script');
 
-        script.src = 'http://www.camerastork.com/javascripts/widget.js?product=1234'
+        script.src = 'http://www.camerastork.com/javascripts/widget.js'
         script.async = true;
 
         var entry = document.getElementsByTagName('script')[0];

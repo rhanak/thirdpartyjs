@@ -32,6 +32,7 @@ var Stork = (function (window, undefined) {
 
 		loadScript('http://www.camerastork.com/javascripts/util.js', scriptsDone());
 		loadScript('http://www.camerastork.com/javascripts/dom.js', scriptsDone());
+		loadScript('http://code.jquery.com/jquery-1.9.1.min.js', scriptsDone());
 
 		function scriptsDone() {
 			numberOfFiles++;
@@ -46,17 +47,39 @@ var Stork = (function (window, undefined) {
 		}
 	}
 	function getWidgetParams() {}
-	function getRatingData(params, callback) {}
-	function drawWidget() {}
+	function getRatingData(params, callback) { callback(); }
+	function drawWidget(data, location) {
+		var html = 
+			'<div>' +
+			'   <h3>Mikon E90 Digital SLR</h3>' +
+			'   <img src="http://www.camerastork.com/images/1337-small.jpeg"/>' +
+			'   <p>$599.99</p>' + 
+			'   <p>4.3/5.0 &bull; 176 Reviews</p>' +
+			'</div>';
+		//var div = document.createElement('div');
+		//div.innerHtml = html;
+		location.before(html);
+
+	}
 
 	loadSupportingFiles(function () {
 		var params = getWidgetParams();
 
 		console.log("Scripts loaded");
 
-		getRatingData(params, function() {
-			drawWidget();
+		
+		jQuery('[data-stork-product]').each(function() {
+			var location = jQuery(this);
+			location.removeAttr('data-stork-product');
+
+			var id = location.attr('data-stork-product');
+
+			getRatingData(id, function() {
+				drawWidget({}, location);
+			});
 		});
+			
+		
 	});
 
 	return Stork;
