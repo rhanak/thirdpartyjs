@@ -1,0 +1,14 @@
+{
+  "name": "best-practices",
+  "description": "A package using versioning best-practices",
+  "author": "Charlie Robbins <charlie@nodejitsu.com>",
+  "scripts": {
+    "start": "node app"
+  },
+  "dependencies": {
+    "express": "3.x.x",
+    "virtualhost": "0.x.x",
+    "jade": "*"
+  },
+  "engine": "node >= 0.10.1"
+}
